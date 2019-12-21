@@ -1,7 +1,6 @@
 {
   "name": "comit-final-project",
   "version": "0.1.0",
-  "homepage": "https://namtranhoai.github.io/comit-final-project/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.7.2",
