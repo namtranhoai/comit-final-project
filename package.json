@@ -2,7 +2,6 @@
   "name": "comit-final-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nellies.herokuapp.com/",
   "dependencies": {
     "@material-ui/core": "^4.7.2",
     "@material-ui/icons": "^4.5.1",
@@ -25,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild":      "NPM_CONFIG_PRODUCTION=false npm install --prefix client        && npm run build --prefix client"
   },
   "eslintConfig": {
     "extends": "react-app"
