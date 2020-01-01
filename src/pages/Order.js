@@ -59,7 +59,7 @@ class Order extends Component {
           <SearchInput />
         </Grid>
         <Grid container justify="center">
-          <LeftMenu />
+          {/* <LeftMenu /> */}
         </Grid>
         <Grid
           container
