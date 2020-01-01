@@ -19,19 +19,8 @@ class MCart extends Component {
     const {classes} = this.props;
     let { cart } = this.props.data;
     return (
-      <div
-        className={classes.list}
-        role="presentation"
-        onClick={()=>this.props.dispatch(closeMCart())}
-        onKeyDown={()=>this.props.dispatch(closeMCart())}
-      >
-        {cart &&
-          cart.map((dish,index) => (
-            <li key={index}>
-              {dish.name} - {dish.number}
-            </li>
-          ))}
-      </div>
+      <div></div>
+
     );
   }
 }

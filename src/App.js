@@ -18,6 +18,7 @@ import AuthRoute from "./util/AuthRoute.js";
 // pages
 import Home from "./pages/Home";
 import Order from "./pages/Order";
+import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import About from "./pages/About";
 
@@ -43,8 +44,7 @@ class App extends Component {
         <Provider store={store}>
           <SnackbarProvider maxSnack={3}>
             <div className="App">
-              {/* <Router basename="/comit-final-project" /> */}
-              <Router />
+              {/* <Router /> */}
               <Router>
                 <Navbar />
                 <div className="container">
@@ -58,6 +58,11 @@ class App extends Component {
                       exact
                       path={`${process.env.PUBLIC_URL}/order`}
                       component={Order}
+                    />
+                    <Route
+                      exact
+                      path={`${process.env.PUBLIC_URL}/cart`}
+                      component={Cart}
                     />
                     <AuthRoute
                       exact

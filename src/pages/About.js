@@ -10,7 +10,6 @@ import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { connect } from "react-redux";
-import { flexbox } from "@material-ui/system";
 //import {loginUser} from '../redux/actions/userActions';
 const styles = {
   info:{
@@ -76,7 +75,7 @@ export class About extends Component {
               <b>Phone</b>: <a href="tel:+13069336295">(306) 933-6295</a>
               <br />
               <b>Email</b>:{" "}
-              <a href="mailto:nam.sakatoon@gmail.com">nam.sakatoon@gmail.com</a>
+              <a href="mailto:namtranhoai@gmail.com">namtranhoai@gmail.com</a>
               <br />
               <b>Address</b>: 114 - 15 Innovation Blvd,<br/> Saskatoon, SK S7N 2X8,
             </address>

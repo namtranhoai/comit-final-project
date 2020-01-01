@@ -4,7 +4,6 @@ import {
   FETCH_DATA_LOADED,
   FETCH_DATA_SUCCESS,
   FETCH_SLIDE_SUCCESS,
-  UPDATE_PRICE,
   UPDATE_SEARCH,
   UPDATE_CART,
   CLOSE_MCART,
@@ -14,6 +13,7 @@ import {
 const initialState = {
   loading: false,
   searchText: "",
+  categories: [],
   data: [],
   dishes: [],
   slides: [],
@@ -41,7 +41,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: action.payload.data
+        categories: action.payload.data.categories,
+        data: action.payload.data.menu
       };
     case FETCH_DATA_SUCCESS:
       return {

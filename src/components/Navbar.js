@@ -38,7 +38,9 @@ class Navbar extends Component {
           </Button>
           <IconButton
             aria-label="4 pending messages"
-            onClick={() => this.props.dispatch(openMCart())}
+            // onClick={() => this.props.dispatch(openMCart())}
+            component={Link}
+            to={`${process.env.PUBLIC_URL}/cart`}
           >
             <Badge badgeContent={cart.length} color="secondary">
               <ShoppingCartIcon fontSize="large" />

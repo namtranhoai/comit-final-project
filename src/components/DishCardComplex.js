@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -18,12 +17,10 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Chip from "@material-ui/core/Chip";
 // notification
 import { withSnackbar } from "notistack";
-
-import DishIncludes from "./DishIncludes";
 import PropTypes from "prop-types";
 // Redux stuff
 import { connect } from "react-redux";
-import { fetchDataSuccess, updateCart } from "../redux/actions/dataActions";
+import { fetchDataSuccess, updateCart, calLastPrice } from "../redux/actions/dataActions";
 
 const styles = theme => ({
   cardWrapper: {
@@ -72,14 +69,13 @@ const styles = theme => ({
   }
 });
 class DishCardComplex extends Component {
-  handleOptionClick = (dishIdx,iIdx, oIdx) => {
-    console.log(dishIdx,iIdx, oIdx);
-    // let currentCode = this.props.dish.code;
-    // let newDishes = this.props.data.dishes.slice(0);
-    // let index = newDishes.findIndex(d => d.code === currentCode);
-    // newDishes[index].number--;
-    // if (newDishes[index].number < 1) newDishes[index].number = 1;
-    // this.props.dispatch(fetchDataSuccess(newDishes));
+  handleOptionClick = (dIdx,iIdx, oIdx) => {
+    // console.log(dishIdx,iIdx, oIdx);
+    let newDishes = this.props.data.dishes.slice(0);
+    newDishes[dIdx].includes[iIdx].optionSelected=oIdx;
+    newDishes[dIdx].last_price = calLastPrice(newDishes[dIdx]);
+    this.props.dispatch(fetchDataSuccess(newDishes));
+
   };
   handleDownClick = (dIdx) => {
     let newDishes = this.props.data.dishes.slice(0);
@@ -89,7 +85,7 @@ class DishCardComplex extends Component {
   };
   handFavClick = (dIdx) => {
     let newDishes = this.props.data.dishes.slice(0);
-    newDishes[dIdx].favorite = newDishes[dIdx].favorite == "1" ? "0" : "1";
+    newDishes[dIdx].favorite = newDishes[dIdx].favorite === "1" ? "0" : "1";
     this.props.dispatch(fetchDataSuccess(newDishes));
   };
   handleUpClick = (dIdx) => {
@@ -121,21 +117,20 @@ class DishCardComplex extends Component {
   render() {
     const {
       classes,
-      dIdx:dIdx,
+      dIdx,
       dish: {
         favorite,
         number,
-        code,
         name,
         description,
-        basePrice,
-        lastPrice,
-        imageUrl,
+        base_price,
+        last_price,
+        image_url,
         includes
       },
       loading
     } = this.props;
-    const imageBaseUrl = imageUrl ? imageUrl : "/dish.png";
+    const imageBaseUrl = image_url;
     return (
       <Card className={classes.card}>
         <CardHeader
@@ -153,7 +148,7 @@ class DishCardComplex extends Component {
             </IconButton>
           }
           title={name}
-          subheader={`base Price:${basePrice / 100}$`}
+          subheader={`base Price:${base_price / 100}$`}
         />
         <CardMedia
           className={classes.media}
@@ -177,7 +172,7 @@ class DishCardComplex extends Component {
                         key={`${dIdx}-${iIdx}-${oIdx}`}
                         label={`${option.name} ${option.adjustPrice}$`}
                         onClick={()=>this.handleOptionClick(dIdx,iIdx,oIdx)}
-                        color={oIdx == include.optionSelected ? "secondary" : "default"}
+                        color={oIdx === parseInt(include.optionSelected) ? "secondary" : "default"}
                       />
                     ))}
                 </div>
@@ -192,7 +187,11 @@ class DishCardComplex extends Component {
             <Button onClick={()=>this.handleUpClick(dIdx)}>+</Button>
           </ButtonGroup>
           <Chip
-              label={`Total: ${lastPrice/100}$`}
+              label={`last Price: ${last_price/100}$`}
+              color="secondary"
+            />
+          <Chip
+              label={`total: ${number*last_price/100}$`}
               color="secondary"
             />
         </CardActions>
@@ -219,7 +218,9 @@ class DishCardComplex extends Component {
 DishCardComplex.propTypes = {
   data: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  fetchDataSuccess: PropTypes.func.isRequired
+  fetchDataSuccess: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired,
+  calLastPrice: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -229,7 +230,8 @@ const mapStateToProps = state => ({
 const mapActionsToProps = dispatch => ({
   dispatch,
   fetchDataSuccess,
-  updateCart
+  updateCart,
+  calLastPrice
 });
 export default connect(
   mapStateToProps,

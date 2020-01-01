@@ -5,7 +5,7 @@ import InputBase from "@material-ui/core/InputBase";
 // import Divider from '@material-ui/core/Divider';
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+import ClearIcon from '@material-ui/icons/Clear';
 import PropTypes from "prop-types";
 // Redux stuff
 import { connect } from "react-redux";
@@ -37,10 +37,18 @@ class SearchInput extends Component {
     // alert();
     //this.setState({ searchText: event.currentTarget.value });
   }
+  handleClickClear(event){
+    event.preventDefault();
+    this.props.dispatch( doSearch(''));
+  }
+  handleSubmitClear(event){
+    event.preventDefault();
+    //this.props.dispatch( doSearch(''));
+  }
   render() {
     let { classes, searchText } = this.props;
     return (
-      <Paper component="form" className={classes.root}>
+      <Paper component="form" className={classes.root} onSubmit={(e) => { e.preventDefault();}}>
         <IconButton className={classes.iconButton} aria-label="menu">
           <MenuIcon />
         </IconButton>
@@ -54,9 +62,10 @@ class SearchInput extends Component {
         <IconButton
           type="submit"
           className={classes.iconButton}
-          aria-label="search"
+          aria-label="clear"
+          onClick={this.handleClickClear.bind(this)}
         >
-          <SearchIcon color="primary" />
+          <ClearIcon color="inherit" />
         </IconButton>
       </Paper>
     );

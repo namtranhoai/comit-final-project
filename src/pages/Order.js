@@ -7,21 +7,21 @@ import PropTypes from "prop-types";
 // Order dishes component
 import SearchInput from "../components/SearchInput";
 import DishCardComplex from "../components/DishCardComplex";
+import LeftMenu from "../components/LeftMenu";
 import MCart from "../components/MCart";
 // Redux stuff
 import { connect } from "react-redux";
 import { fetchData, openMCart, closeMCart } from "../redux/actions/dataActions";
 const styles = theme => ({
   root: {
-    display: 'flex',
-    '& > * + *': {
+    display: "flex",
+    "& > * + *": {
       marginLeft: theme.spacing(2),
-      marginTop:300
-    },
-  },
+      marginTop: 300
+    }
+  }
 });
 class Order extends Component {
-
   componentDidMount() {
     this.props.dispatch(fetchData());
     // console.log(this.props)
@@ -30,7 +30,7 @@ class Order extends Component {
     this.props.dispatch(closeMCart());
   };
   render() {
-    const { classes,  error, loading, dishes, mcart } = this.props;
+    const { classes, error, loading,  dishes, mcart } = this.props;
 
     if (error) {
       return (
@@ -54,8 +54,12 @@ class Order extends Component {
 
     return (
       <Grid container>
+
         <Grid container justify="center">
           <SearchInput />
+        </Grid>
+        <Grid container justify="center">
+          <LeftMenu />
         </Grid>
         <Grid
           container
@@ -63,11 +67,11 @@ class Order extends Component {
           justify="center"
           alignItems="flex-start"
         >
-          {recentDishesMarkup}
+        {recentDishesMarkup}
         </Grid>
-        <Drawer anchor="right" open={mcart} onClose={this.closeMCartPanel}>
+        {/* <Drawer anchor="right" open={mcart} onClose={this.closeMCartPanel}>
           <MCart />
-        </Drawer>
+        </Drawer> */}
       </Grid>
     );
   }
@@ -83,6 +87,7 @@ Order.propTypes = {
 const mapStateToProps = state => ({
   classes: state.classes,
   dishes: state.data.dishes,
+  categories: state.data.categories,
   loading: state.data.loading,
   error: state.data.error,
   mcart: state.data.mcart,

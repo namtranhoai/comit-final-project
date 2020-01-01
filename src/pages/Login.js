@@ -62,7 +62,8 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password
         }
-        this.props.loginUser(userData, this.props.history);
+        alert('Not implemented yet');
+        //this.props.loginUser(userData, this.props.history);
     }
     handleChange = (event) =>{
         this.setState({

@@ -4,7 +4,6 @@ import {
   FETCH_DATA_LOADED,
   FETCH_DATA_SUCCESS,
   FETCH_SLIDE_SUCCESS,
-  UPDATE_PRICE,
   UPDATE_SEARCH,
   UPDATE_CART,
   OPEN_MCART,
@@ -13,13 +12,16 @@ import {
 import axios from "axios";
 
 export function calLastPrice(dish) {
-  let {basePrice, includes} = dish;
-  let lastPrice = basePrice;
+  let {base_price, includes} = dish;
+  let last_price = base_price;
+
   includes.forEach(function(include){
-     if(!!include.options){
-       lastPrice = parseInt(lastPrice)+ parseInt(include.options[includes.optionSelected].ajustPrice);
+    let oIdx = parseInt(include.optionSelected)
+    if(!!include.options[oIdx]){
+       last_price = parseInt(last_price)+ parseInt(include.options[oIdx].adjust_price);
      }
   });
+  return last_price;
 }
 // Dishes
 export function doSearch(searchText) {
@@ -44,10 +46,11 @@ export function fetchData() {
   return dispatch => {
     dispatch(fetchBegin());
     return axios
-      .get(`${process.env.PUBLIC_URL}/data/dishes.json`)
+      .get(`/api/get-data`)
       .then(res => {
         dispatch(fetchDataLoaded(res.data));
-        dispatch(fetchDataSuccess(res.data));
+        dispatch(fetchDataSuccess(res.data.menu));
+        // console.log(res.data);
         return res.data;
       })
       .catch(error => dispatch(fetchFailure(error)));
