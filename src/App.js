@@ -19,6 +19,7 @@ import AuthRoute from "./util/AuthRoute.js";
 import Home from "./pages/Home";
 import Order from "./pages/Order";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import About from "./pages/About";
 
@@ -65,6 +66,11 @@ class App extends Component {
                       path={`${process.env.PUBLIC_URL}/cart`}
                       component={Cart}
                     />
+                     <Route
+                      exact
+                      path={`${process.env.PUBLIC_URL}/checkout`}
+                      component={Checkout}
+                    />
                     <AuthRoute
                       exact
                       path={`${process.env.PUBLIC_URL}/login`}
@@ -77,7 +83,7 @@ class App extends Component {
                     />
                   </Switch>
                 </div>
-                <NavbarBottom />
+                {/* <NavbarBottom /> */}
               </Router>
             </div>
           </SnackbarProvider>

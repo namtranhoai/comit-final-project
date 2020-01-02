@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Drawer from "@material-ui/core/Drawer";
+//import Drawer from "@material-ui/core/Drawer";
+import Paper from "@material-ui/core/Paper";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import PropTypes from "prop-types";
 // Order dishes component
@@ -30,7 +31,7 @@ class Order extends Component {
     this.props.dispatch(closeMCart());
   };
   render() {
-    const { classes, error, loading,  dishes, mcart } = this.props;
+    const { classes, error, loading, dishes, mcart } = this.props;
 
     if (error) {
       return (
@@ -48,27 +49,25 @@ class Order extends Component {
       );
     }
 
-    const recentDishesMarkup = dishes.map((dish,dIdx) => (
+    const recentDishesMarkup = dishes.map((dish, dIdx) => (
       <DishCardComplex key={dIdx} dIdx={dIdx} dish={dish} />
     ));
 
     return (
       <Grid container>
-
         <Grid container justify="center">
           <SearchInput />
         </Grid>
-        <Grid container justify="center">
-          {/* <LeftMenu /> */}
-        </Grid>
+
         <Grid
           container
           direction="row"
           justify="center"
           alignItems="flex-start"
         >
-        {recentDishesMarkup}
+          {recentDishesMarkup}
         </Grid>
+
         {/* <Drawer anchor="right" open={mcart} onClose={this.closeMCartPanel}>
           <MCart />
         </Drawer> */}

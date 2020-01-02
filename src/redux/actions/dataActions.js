@@ -27,9 +27,9 @@ export function calLastPrice(dish) {
 export function doSearch(searchText) {
   return (dispatch, getState) => {
     const {
-      data: { data }
+      data: { categories, data }
     } = getState();
-
+    console.log(categories);
     let filteredDishes = data.filter(function(dish) {
       if (dish.name.toLowerCase().includes(searchText.toLowerCase())) {
         return true;

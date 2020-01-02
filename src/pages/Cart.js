@@ -56,7 +56,7 @@ class Cart extends Component {
     let totalPay = 0;
     const trMarkup = cart.map((dish, dIdx) => {
       totalNumber += parseInt(dish.number);
-      totalPay += (dish.number * dish.lastPrice) / 100;
+      totalPay += (dish.number * dish.base_price) / 100;
       return (
         <>
           <TableRow key={dIdx + 1}>
@@ -77,9 +77,9 @@ class Cart extends Component {
                 <Button onClick={() => this.handleUpClick(dIdx)}>+</Button>
               </ButtonGroup>
             </TableCell>
-            <TableCell align="right">{dish.lastPrice / 100}</TableCell>
+            <TableCell align="right">{dish.base_price / 100}</TableCell>
             <TableCell align="right">
-              {(dish.number * dish.lastPrice) / 100}
+              {(dish.number * dish.base_price) / 100}
             </TableCell>
             <TableCell align="right">
               <IconButton
@@ -142,7 +142,7 @@ class Cart extends Component {
                   className={classes.button}
                   color="secondary"
                   component={Link}
-                  to={`${process.env.PUBLIC_URL}/order`}
+                  to={`${process.env.PUBLIC_URL}/checkout`}
                   className="nav-button"
                 >
                   Checkout

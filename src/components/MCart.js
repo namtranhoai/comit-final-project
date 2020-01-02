@@ -16,11 +16,23 @@ const styles = theme => ({
 class MCart extends Component {
 
   render() {
-    const {classes} = this.props;
-    let { cart } = this.props.data;
-    return (
-      <div></div>
+    const { classes, cart } = this.props;
+    let totalNumber = 0;
+    let totalPay = 0;
+    const trMarkup = cart.map((dish, dIdx) => {
+      totalNumber += parseInt(dish.number);
+      totalPay += (dish.number * dish.last_price) / 100;
+      return (
+        <>
+          {dish.name}
+        </>
 
+      );
+    });
+    return (
+      <>
+      {trMarkup}
+      </>
     );
   }
 }
@@ -31,7 +43,7 @@ MCart.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  data: state.data,
+  cart: state.data.cart,
   UI: state.UI
 });
 const mapActionsToProps = dispatch => ({
