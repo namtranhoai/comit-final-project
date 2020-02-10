@@ -148,7 +148,7 @@ class DishCardComplex extends Component {
             </IconButton>
           }
           title={name}
-          subheader={`base Price:${base_price / 100}$`}
+          subheader={`base Price:$${base_price / 100}`}
         />
         <CardMedia
           className={classes.media}
@@ -170,7 +170,7 @@ class DishCardComplex extends Component {
                     include.options.map((option, oIdx) => (
                       <Chip
                         key={`${dIdx}-${iIdx}-${oIdx}`}
-                        label={`${option.name} ${option.adjust_price/100}$`}
+                        label={`${option.name} $${option.adjust_price/100}`}
                         onClick={()=>this.handleOptionClick(dIdx,iIdx,oIdx)}
                         color={oIdx === parseInt(include.optionSelected) ? "secondary" : "default"}
                       />
