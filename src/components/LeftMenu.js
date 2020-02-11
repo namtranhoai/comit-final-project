@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box';
 import PropTypes from "prop-types";
 // Redux stuff
 import { connect } from "react-redux";
-import { openMCart } from "../redux/actions/dataActions";
+// import { openMCart } from "../redux/actions/dataActions";
 class LeftMenu extends Component {
   handleCategoryClick = cid => {
     let newCat = this.props.categories.slice(0);

@@ -16,7 +16,7 @@ const styles = theme => ({
 class MCart extends Component {
 
   render() {
-    const { classes, cart } = this.props;
+    const {cart } = this.props;
     let totalNumber = 0;
     let totalPay = 0;
     const trMarkup = cart.map((dish, dIdx) => {

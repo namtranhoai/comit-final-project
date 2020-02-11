@@ -127,10 +127,8 @@ class Cart extends Component {
                   variant="contained"
                   color="primary"
                   className={classes.button}
-                  color="primary"
                   component={Link}
                   to={`${process.env.PUBLIC_URL}/order`}
-                  className="nav-button"
                 >
                   Back to Order
                 </Button>
@@ -138,12 +136,10 @@ class Cart extends Component {
                 <Button
                   disabled={cart.length>0?false:true}
                   variant="contained"
-                  color="primary"
                   className={classes.button}
                   color="secondary"
                   component={Link}
                   to={`${process.env.PUBLIC_URL}/checkout`}
-                  className="nav-button"
                 >
                   Checkout
                 </Button>

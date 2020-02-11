@@ -13,7 +13,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 // Component
 import Navbar from "./components/Navbar";
-import NavbarBottom from "./components/NavbarBottom";
+//import NavbarBottom from "./components/NavbarBottom";
 import AuthRoute from "./util/AuthRoute.js";
 // pages
 import Home from "./pages/Home";
