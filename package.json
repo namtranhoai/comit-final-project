@@ -1,17 +1,17 @@
 {
   "name": "comit-final-project",
   "version": "0.1.0",
-  "homepage": "https://nellies.herokuapp.com/",
+  "homepage": "http://adm.nellieskitchen.com/",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.7.2",
-    "@material-ui/icons": "^4.5.1",
-    "axios": "^0.19.0",
-    "concurrently": "^5.0.2",
+    "@material-ui/core": "^4.9.2",
+    "@material-ui/icons": "^4.9.1",
+    "axios": "^0.19.2",
+    "concurrently": "^5.1.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.0",
-    "dayjs": "^1.8.17",
-    "env-cmd": "^10.0.1",
+    "dayjs": "^1.8.20",
+    "env-cmd": "^10.1.0",
     "http-proxy-middleware": "^0.20.0",
     "jwt-decode": "^2.2.0",
     "normalize.css": "^8.0.1",
@@ -22,7 +22,7 @@
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1",
-    "redux": "^4.0.4",
+    "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -48,5 +48,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://nellies-mng.herokuapp.com/"
+  "proxy": "http://adm.nellieskitchen.com/"
 }

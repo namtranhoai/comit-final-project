@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -68,7 +68,7 @@ const styles = theme => ({
     padding: "5px 15px"
   }
 });
-class DishCardComplex extends Component {
+class DishCardComplex extends PureComponent {
   handleOptionClick = (dIdx,iIdx, oIdx) => {
     // console.log(dishIdx,iIdx, oIdx);
     let newDishes = this.props.data.dishes.slice(0);
