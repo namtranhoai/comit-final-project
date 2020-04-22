@@ -30,9 +30,9 @@ class Checkout extends Component {
   }
   handleSubmit = event => {
     event.preventDefault();
-    const userData = {
-      email: this.state.email
-    };
+    // const userData = {
+    //   email: this.state.email
+    // };
     alert("Not implemented yet");
     //this.props.loginUser(userData, this.props.history);
   };
@@ -43,7 +43,7 @@ class Checkout extends Component {
   };
   render() {
     const {
-      classes,
+      // classes,
       UI: { loading }
     } = this.props;
     const { errors } = this.state;

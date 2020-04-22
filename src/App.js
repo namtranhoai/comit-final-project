@@ -26,15 +26,15 @@ import About from "./pages/About";
 // theme color
 const theme = createMuiTheme(themeFile);
 const token = localStorage.IdToken;
-let authenticated;
+// let authenticated;
 if (token) {
   const decodedToken = jwtDecode(token);
   console.log(decodedToken);
   if (decodedToken.ex * 1000 < Date.now()) {
     window.location.href = "/login";
-    authenticated = false;
+    // authenticated = false;
   } else {
-    authenticated = true;
+    // authenticated = true;
   }
 }
 

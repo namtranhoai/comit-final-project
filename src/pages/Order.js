@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
 //import Drawer from "@material-ui/core/Drawer";
-import Paper from "@material-ui/core/Paper";
+// import Paper from "@material-ui/core/Paper";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import PropTypes from "prop-types";
 // Order dishes component
 import SearchInput from "../components/SearchInput";
 import DishCardComplex from "../components/DishCardComplex";
-import LeftMenu from "../components/LeftMenu";
-import MCart from "../components/MCart";
+// import LeftMenu from "../components/LeftMenu";
+// import MCart from "../components/MCart";
 // Redux stuff
 import { connect } from "react-redux";
 import { fetchData, openMCart, closeMCart } from "../redux/actions/dataActions";
@@ -31,7 +31,7 @@ class Order extends Component {
     this.props.dispatch(closeMCart());
   };
   render() {
-    const { classes, error, loading, dishes, mcart } = this.props;
+    const { classes, error, loading, dishes} = this.props;
 
     if (error) {
       return (

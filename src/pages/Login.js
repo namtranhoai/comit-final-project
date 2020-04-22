@@ -58,10 +58,10 @@ class Login extends Component {
     }
     handleSubmit = (event) =>{
         event.preventDefault();
-        const userData = {
-            email: this.state.email,
-            password: this.state.password
-        }
+        // const userData = {
+        //     email: this.state.email,
+        //     password: this.state.password
+        // }
         alert('Not implemented yet');
         //this.props.loginUser(userData, this.props.history);
     }
@@ -128,11 +128,11 @@ class Login extends Component {
 Login.propTypes = {
     classes : PropTypes.object.isRequired,
     loginUser: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
+    // user: PropTypes.object.isRequired,
     UI: PropTypes.object.isRequired
 }
 const mapStateToProps = (state)=>({
-    user:state.user,
+    // user:state.user,
     UI: state.UI
 })
 const mapActionsToProps={
