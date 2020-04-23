@@ -7,7 +7,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import PropTypes from "prop-types";
 // Order dishes component
 import SearchInput from "../components/SearchInput";
-import DishCardComplex from "../components/DishCardComplex";
+import DishCard from "../components/dish/DishCard";
 // import LeftMenu from "../components/LeftMenu";
 // import MCart from "../components/MCart";
 // Redux stuff
@@ -50,7 +50,7 @@ class Order extends Component {
     }
 
     const recentDishesMarkup = dishes.map((dish, dIdx) => (
-      <DishCardComplex key={dIdx} dIdx={dIdx} dish={dish} />
+      <DishCard key={dIdx} dIdx={dIdx} dish={dish} />
     ));
 
     return (
